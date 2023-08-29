@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DiffusionEngine: Diffusion Model is Scalable Data Engine for Object Detection">
+  <meta name="keywords" content="DiffusionEngine, Data Generation, Object Detection">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffusionEngine: Diffusion Model is Scalable Data Engine for Object Detection</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+<!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!--<nav class="navbar" role="navigation" aria-label="main navigation">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--  <div class="navbar-menu">-->
+<!--    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">-->
+<!--      <a class="navbar-item" href="https://keunhong.com">-->
+<!--      <span class="icon">-->
+<!--          <i class="fas fa-home"></i>-->
+<!--      </span>-->
+<!--      </a>-->
+
+<!--      <div class="navbar-item has-dropdown is-hoverable">-->
+<!--        <a class="navbar-link">-->
+<!--          More Research-->
+<!--        </a>-->
+<!--        <div class="navbar-dropdown">-->
+<!--          <a class="navbar-item" href="https://hypernerf.github.io">-->
+<!--            HyperNeRF-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://nerfies.github.io">-->
+<!--            Nerfies-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://latentfusion.github.io">-->
+<!--            LatentFusion-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://photoshape.github.io">-->
+<!--            PhotoShape-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</nav>-->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DiffusionEngine: Diffusion Model is Scalable Data Engine for Object Detection</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a >Manlin Zhang</a><sup>1,*</sup>,</span>
+            <span class="author-block">
+              <a href="https://wujie1010.github.io/">Jie Wu</a><sup>2,*,&#8224</sup>,</span>
+            <span class="author-block">
+              <a >Yuxi Ren</a><sup>2,*</sup>,</span>
+            <span class="author-block">
+              <a >Ming Li</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a >Jie Qin</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a >Xuefeng Xiao</a><sup>2</sup>,</span><br>
+            <span class="author-block">
+              <a >Wei Liu</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a >Rui Wang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a >Min Zheng</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a >Andy J Ma</a><sup>1,&#8224</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>School of Computer Science and Engineering, Sun Yat-sen University,</span>
+            <span class="author-block"><sup>2</sup>ByteDance Inc</span>
+          </div>
+          <div class="is-size-6 ">
+            <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+            <span class="author-block"><sup>&#8224</sup>Corresponding Author</span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+<!--              <span class="link-block">-->
+<!--                <a href="https://arxiv.org/abs/2011.12948"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Video Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/bytedance/DiffusionEngine"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <video autoplay muted controls  width="3072" height="752" style="padding-bottom: 10px">
+          <source src="./static/videos/photo_scaling_1.mp4" type="video/mp4">
+          Video tag not supported.
+        </video>
+        <span style="font-family: times new roman, serif; font-size: 18px;"><b><i>DiffusionEngine</i></b></span> generates high-quality detection-oriented training pairs in a single stage.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--<section class="hero is-light">-->
+<!--  <div class="hero-body">-->
+<!--    <div class="container">-->
+<!--      <div id="results-carousel" class="carousel results-carousel">-->
+<!--        <div class="item item-steve">-->
+<!--          <figure>-->
+<!--            <img src="static/images/S_photo_gen_1.png">-->
+<!--            <figcaption>(a) Data Scaling-up for <i>Photo</i>.</figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="item item-chair-tp">-->
+<!--          <figure height="100%" width="100%">-->
+<!--            <img src="static/images/S_photo_gen_1.png">-->
+<!--            <figcaption>(a) Data Scaling-up for <i>Photo</i>.</figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="item item-shiba">-->
+<!--          <figure height="100%">-->
+<!--            <img src="static/images/S_clipart_gen_1.png">-->
+<!--            <figcaption>(b) Data Scaling-up for <i>Clipart</i>.</figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="item item-fullbody">-->
+<!--          <figure height="100%">-->
+<!--            <img src="static/images/S_generalize_gen_1.png">-->
+<!--            <figcaption>(c) Data Scaling-up <i>across-domain</i>.</figcaption>-->
+<!--          </figure>-->
+<!--        </div>-->
+<!--        <div class="item item-blueshirt">-->
+<!--          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">-->
+<!--            <source src="./static/videos/blueshirt.mp4"-->
+<!--                    type="video/mp4">-->
+<!--          </video>-->
+<!--        </div>-->
+<!--        <div class="item item-mask">-->
+<!--          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">-->
+<!--            <source src="./static/videos/mask.mp4"-->
+<!--                    type="video/mp4">-->
+<!--          </video>-->
+<!--        </div>-->
+<!--        <div class="item item-coffee">-->
+<!--          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">-->
+<!--            <source src="./static/videos/coffee.mp4"-->
+<!--                    type="video/mp4">-->
+<!--          </video>-->
+<!--        </div>-->
+<!--        <div class="item item-toby">-->
+<!--          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">-->
+<!--            <source src="./static/videos/toby2.mp4"-->
+<!--                    type="video/mp4">-->
+<!--          </video>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-8">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Data is the cornerstone of deep learning. This paper reveals that the recently-developed Diffusion Model is a scalable data engine for object detection.
+          </p>
+          <p>
+            Existing methods for scaling up detection-oriented data often require manual collection or generative models to obtain target images,
+            followed by data augmentation and labeling to produce training pairs, which are costly, complex, or lacking diversity.
+            To address these issues, we present <span style="font-size: 16px;"><b>DiffusionEngine</b></span> (DE), a data scaling-up engine that provides high-quality detection-oriented training pairs in a single stage.
+            DE consists of a pre-trained diffusion model and an effective <span style="font-size: 16px;"><b>Detection-Adapter</b></span>, contributing to generating scalable, diverse and generalizable detection data in a plug-and-play manner.
+            Detection-Adapter is learned to align the implicit semantic and location knowledge in off-the-shelf diffusion models with detection-aware signals to make better bounding-box predictions.
+            Additionally, we contribute two datasets, i.e., COCO-DE and VOC-DE, to scale up existing detection benchmarks for facilitating follow-up research.
+            Extensive experiments demonstrate that data scaling-up via DE can achieve significant improvements in diverse scenarios,
+            such as various detection algorithms, self-supervised pre-training, data-sparse, label-scarce, cross-domain, and semi-supervised learning.
+            For example, when using DE with a DINO-based detection-adapter to scaling-up data, mAP is improved by 3.1% on COCO, 7.6% on VOC and 11.5% on Clipart.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Video</h2>-->
+<!--        <div class="publication-video">-->
+<!--          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"-->
+<!--                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop has-text-centered">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <figure><img width=95% src="static/images/pipeline.png"></figure>
+          <p>
+            <b>The upper figure</b> shows the training procedure of DiffusionEngine, where the LDM is frozen in this stage.
+            Each image undergoes a 1-step noise adding, followed by a single-step denoising process to simulate the last image generation step in the LDM.
+            The detection adapter learns to leverage the extracted pyramid features from the denoising U-Net decoder for detection.
+            <b>The figure below</b> shows how we use the trained DiffusionEngine for data scaling-up.
+            A reference image undergoes a random number \(k\) of noise-adding steps, resulting in a noisy sample \(z_k\), which is then denoised using text embedding as guidance. Finally, low-confidence detections are filtered out. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container has-text-centered">
+    <div class="columns is-centered" style="padding-top: 50px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <div class="content">
+          <h3 class="title is-4"> Data Scaling-Up with DiffusionEngine </h3>
+          <p>
+            DiffusionEngine is scalable, diversified, and can generalize robustly across domains.
+          </p>
+          <div>
+            <ul>
+              <li style="padding-right: 20px">
+                <a href="static/images/S_photo_gen_1.png"><img src="static/images/S_photo_gen_1.png"></a>
+                <p style="padding-top: 10px">(a) Data scaling-up for photo.</p>
+              </li>
+              <li style="padding-right: 20px">
+                <a href="static/images/S_clipart_gen_1.png"><img src="static/images/S_clipart_gen_1.png"></a>
+                <p style="padding-top: 10px">(b) Data scaling-up for clipart.</p>
+              </li>
+              <li>
+                <a href="static/images/S_generalize_gen_1.png"><img src="static/images/S_generalize_gen_1.png"></a>
+                <p style="padding-top: 10px">(c) Data scaling-up across-domain.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="content" style="padding: 30px 0px;">
+          <h3 class="title is-4">More Animations</h3>
+          <div class="content has-text-centered">
+            <video id="replay-video"
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="80%" style="padding-bottom: 10px">
+              <source src="./static/videos/photo_scaling_2.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="content has-text-centered">
+            <video id="replay-video"
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="80%" style="padding-bottom: 10px">
+              <source src="./static/videos/clipart_scaling_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="content has-text-centered">
+            <video id="replay-video"
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="80%">
+              <source src="./static/videos/photo2clipart_generalize_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content ">
+    <h2 class="title has-text-centered">BibTeX</h2>
+    <pre><code>@article{zhang2023diffusion,
+  author    = {Manlin Zhang, Jie Wu, Yuxi Ren, Ming Li, Jie Qin, Xuefeng Xiao, Wei Liu, Rui Wang, Min Zheng, Xin Pan, Andy J Ma},
+  title     = {DiffusionEngine: Diffusion Model is Scalable Data Engine for Object Detection},
+  journal   = {arxiv: 230xxx.xxxx},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <div  style="align: center; width: 100%;">
+        <ul>
+          <li style="width: 50%; padding-left: 16%"><img src="static/images/sysu_logo.png" style="height:50px;"></li>
+          <li style="width: 50%; padding-right: 20%"><img src="static/images/bytedance_logo.svg" style="height:50px;"></li>
+        </ul>
+      </div>
+    </div>
+<!--    <div class="content has-text-centered">-->
+<!--      <a class="icon-link"-->
+<!--         href="./static/videos/nerfies_paper.pdf">-->
+<!--        <i class="fas fa-file-pdf"></i>-->
+<!--      </a>-->
+<!--      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>-->
+<!--        <i class="fab fa-github"></i>-->
+<!--      </a>-->
+<!--    </div>-->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website adapted from the following <a href="https://github.com/nerfies/nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
